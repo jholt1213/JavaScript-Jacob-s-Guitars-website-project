@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--
+      Project Form Page
+      Author: Jacob Holt
+      Date: 12/07/2025
+      Filename: project_form.html
+      
+      This page satisfies requirements from:
+      Tutorial 7 – Web Forms
+      Tutorial 9 – JavaScript
+   -->
+   
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Jacob's Guitars | Contact & Custom Quote</title>
+   <link rel="stylesheet" href="format.css">
+   <link rel="stylesheet" href="layout.css">
+</head>
+
+<body>
+   <header>
+      <div class="logo">
+         <img src="music_store_logo_1.png" alt="Jacob's Guitars Logo">
+      </div>
+      <h1>Contact & Custom Guitar Quote</h1>
+   </header>
+
+   <nav class="horizontal">
+      <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="project_store.html">Shop</a></li>
+         <li><a href="project_about.html">About</a></li>
+         <li><a href="project_form.html">Contact</a></li>
+      </ul>
+   </nav>
+
+   <section id="contact">
+      <h1>Tell us about your dream guitar</h1>
+
+      <!-- Tutorial 7: Form with multiple fieldsets and various inputs -->
+      <form id="quoteForm">
+
+         <!-- FIELDSET 1: Customer Info -->
+         <fieldset>
+            <legend>Customer Information</legend>
+
+            <!-- Text input with validation & length -->
+            <label for="custName">Full Name (required)</label>
+            <input id="custName" name="custName" type="text"
+                   required
+                   minlength="2"
+                   maxlength="40"
+                   pattern="[A-Za-z]+(\s[A-Za-z]+)+"
+                   placeholder="First Last">
+
+            <!-- Mobile keyboard: email -->
+            <label for="custEmail">Email (required)</label>
+            <input id="custEmail" name="custEmail" type="email"
+                   required
+                   placeholder="you@example.com">
+
+            <!-- Mobile keyboard: phone -->
+            <label for="custPhone">Phone Number (optional)</label>
+            <input id="custPhone" name="custPhone" type="tel"
+                   pattern="^(\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{4})$"
+                   placeholder="828-555-1234">
+
+            <!-- Date/time Input -->
+            <label for="visitDate">Preferred Visit Date</label>
+            <input id="visitDate" name="visitDate" type="date">
+         </fieldset>
+
+         <!-- FIELDSET 2: Gear Preferences -->
+         <fieldset>
+            <legend>Gear Preferences</legend>
+
+            <!-- Radio Buttons -->
+            <p>Primary Guitar Type (required)</p>
+            <div class="inline-group">
+               <label><input type="radio" name="guitarType" value="Electric" required> Electric</label>
+               <label><input type="radio" name="guitarType" value="Acoustic"> Acoustic</label>
+               <label><input type="radio" name="guitarType" value="Hybrid"> Hybrid</label>
+            </div>
+
+            <!-- Spinner / number input -->
+            <label for="budget">Budget (USD)</label>
+            <input id="budget" name="budget" type="number"
+                   min="200"
+                   max="10000"
+                   step="50"
+                   value="1500">
+
+            <!-- Range slider -->
+            <label for="experience">Experience Level (1 = Beginner, 2 = Intermediate, 3 = Professional)</label>
+            <input id="experience" name="experience" type="range"
+                   min="1" max="3" value="1"
+                   oninput="document.getElementById('expOutput').textContent = this.value;">
+            <p>Selected level: <span id="expOutput">1</span></p>
+
+            <!-- Checkboxes -->
+            <p>Accessories Interested In:</p>
+            <div class="inline-group">
+               <label><input type="checkbox" name="accPedals" value="Pedals"> Pedals</label>
+               <label><input type="checkbox" name="accAmp" value="Amp"> Amp</label>
+               <label><input type="checkbox" name="accCase" value="Case"> Case</label>
+               <label><input type="checkbox" name="accCables" value="Cables"> Cables</label>
+            </div>
+
+            <!-- Datalist -->
+            <label for="favBrand">Favorite Brand</label>
+            <input id="favBrand" name="favBrand" list="brandList" placeholder="Start typing a brand">
+            <datalist id="brandList">
+               <option value="Fender">
+               <option value="Gibson">
+               <option value="Taylor">
+               <option value="PRS">
+               <option value="Ibanez">
+               <option value="Jackson">
+               <option value="Martin">
+               <option value="Gretsch">
+               <option value="Epiphone">
+               <option value="Yamaha">
+               <option value="Schecter">
+            </datalist>
+
+            <!-- Selection list -->
+            <label for="refSource">How did you hear about us?</label>
+            <select id="refSource" name="refSource">
+               <option value="">-- Please select --</option>
+               <option value="Friend">Word of Mouth</option>
+               <option value="Social">Social Media</option>
+               <option value="Search">Google</option>
+               <option value="WalkIn">Local Ad</option>
+            </select>
+         </fieldset>
+
+         <!-- FIELDSET 3: Additional Info -->
+         <fieldset>
+            <legend>Notes & Special Requests</legend>
+            <!-- Textarea with length requirements -->
+            <label for="notes">Tell us more (max 300 characters)</label>
+            <textarea id="notes" name="notes" rows="5"
+                      maxlength="300"
+                      placeholder="Tell us about your playing style, favorite artists, or any custom requests."></textarea>
+         </fieldset>
+
+         <!-- Tutorial 9: Time, countdown, etc. display -->
+         <fieldset>
+            <legend>Extras</legend>
+
+            <p>Current day &amp; time: <span id="currentTime">Loading...</span></p>
+
+            <p>Sale countdown: <span id="countdownDisplay">Not started</span></p>
+            <button type="button" id="startCountdownBtn">Start Countdown</button>
+         </fieldset>
+
+         <!-- Buttons -->
+         <div class="button-row">
+            <input type="reset" value="Cancel / Reset">
+            <input type="submit" value="Submit Quote Request">
+         </div>
+      </form>
+   </section>
+
+   <footer>
+      <p>&copy; 2025 Jacob's Guitars — Hickory, NC</p>
+   </footer>
+   <!-- Tutorial 9 JavaScript file -->
+   <script src="project_form.js"></script>
+</body>
+</html>

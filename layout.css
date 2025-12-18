@@ -1,0 +1,96 @@
+/*
+   Jacob's Guitars - layout.css
+   Author: Jacob Holt
+   Date: 10/31/2025
+   
+   Tutorial 3: Page Layouts
+   - Block vs floating elements
+   - Floated layout
+   - Grid layout
+   - Relative/absolute positioning
+   - Overflow handling
+
+   Tutorial 5: Mobile Design
+   - Responsive layout using @media and flex/flexbox
+*/
+
+/* Logo layout */
+/* Tutorial 3: Block-level and flexbox alignment */
+.logo {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+}
+
+header img {
+   max-width: 140px;
+   height: auto;
+}
+
+/* Tutorial 3: Floating element for about page layout */
+.float-left {
+   float: left;
+   width: 250px;
+   margin: 0 20px 20px 0;
+}
+
+/* Store grid */
+/* Tutorial 3: Grid layout for product cards */
+.store-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 30px;
+   text-align: center;
+}
+
+/* Tutorial 3: Relative positioning and overflow handling */
+.store-grid .item {
+   background-color: #1E1E1E;
+   border: 2px solid #E86123;
+   border-radius: 10px;
+   padding: 20px;
+   position: relative;
+}
+/* Tutorial 3: Absolute positioning */
+.store-grid .item::before {
+   content: "Featured";
+   position: absolute;
+   top: 10px;
+   left: 10px;
+   padding: 4px 8px;
+   background-color: #E86123;
+   color: #2B2B2B;
+   font-size: 0.7rem;
+   border-radius: 4px;
+   overflow: hidden; 
+   } 
+/* Image styling inside grid */
+.store-grid .item img {
+   max-width: 100%;
+   height: auto;
+   border-radius: 8px;
+   overflow: hidden;
+}
+
+/* Tutorial 5: Mobile design using @media */
+/* Adjust layout for smaller screens and use flexbox behavior from nav */
+@media screen and (max-width: 780px) {
+
+   /* Tutorial 5: Flexbox adjusts to a column layout at smaller widths */
+   nav.horizontal ul {
+      flex-direction: column;
+      gap: 15px;
+   }
+
+   /* Tutorial 3 & 5: Float removed for better mobile layout */
+   .float-left {
+      float: none;
+      display: block;
+      margin: 0 auto 20px auto;
+   }
+
+   /* Tutorial 5: One-column grid on small screens */
+   .store-grid {
+      grid-template-columns: 1fr;
+   }
+}
